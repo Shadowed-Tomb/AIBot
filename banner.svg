@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1d" />
+      <stop offset="100%" stop-color="#070a14" />
+    </linearGradient>
+    
+    <!-- Neon Text Glow Filter -->
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    @keyframes pulse {
+      0%, 100% { opacity: 0.8; filter: drop-shadow(0 0 2px #00ffcc); }
+      50% { opacity: 1; filter: drop-shadow(0 0 15px #00ffcc) drop-shadow(0 0 25px #00ffcc); }
+    }
+
+    @keyframes scanline {
+      0% { transform: translateY(-20px); }
+      100% { transform: translateY(220px); }
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes matrixText {
+      0% { opacity: 0.1; }
+      50% { opacity: 0.8; }
+      100% { opacity: 0.1; }
+    }
+
+    .neon-text {
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: bold;
+      fill: #00ffcc;
+      filter: url(#neonGlow);
+      animation: pulse 3s infinite ease-in-out;
+    }
+
+    .sub-text {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 14px;
+      fill: #8b9bb4;
+      letter-spacing: 4px;
+    }
+
+    .matrix-line {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 10px;
+      fill: #00ff66;
+      opacity: 0.3;
+    }
+
+    .glow-circle {
+      stroke: #00ffcc;
+      stroke-width: 1;
+      fill: none;
+      transform-origin: 700px 100px;
+      animation: rotate 15s infinite linear;
+    }
+
+    .glow-circle-inner {
+      stroke: #ff007f;
+      stroke-width: 1;
+      stroke-dasharray: 5, 10;
+      fill: none;
+      transform-origin: 700px 100px;
+      animation: rotate 8s infinite linear reverse;
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="800" height="200" rx="10" fill="url(#bgGrad)" stroke="#1a233d" stroke-width="2"/>
+
+  <!-- Grid Lines -->
+  <path d="M 0,20 L 800,20 M 0,40 L 800,40 M 0,60 L 800,60 M 0,80 L 800,80 M 0,100 L 800,100 M 0,120 L 800,120 M 0,140 L 800,140 M 0,160 L 800,160 M 0,180 L 800,180" stroke="#101827" stroke-width="1" />
+  <path d="M 50,0 L 50,200 M 100,0 L 100,200 M 150,0 L 150,200 M 200,0 L 200,200 M 250,0 L 250,200 M 300,0 L 300,200 M 350,0 L 350,200 M 400,0 L 400,200 M 450,0 L 450,200 M 500,0 L 500,200 M 550,0 L 550,200 M 600,0 L 600,200 M 650,0 L 650,200 M 700,0 L 700,200 M 750,0 L 750,200" stroke="#101827" stroke-width="1" />
+
+  <!-- Animated Matrix Feeds -->
+  <text x="30" y="30" class="matrix-line" style="animation: matrixText 4s infinite 0.5s;">[0.001] CONNECTING...</text>
+  <text x="30" y="50" class="matrix-line" style="animation: matrixText 3s infinite 1.2s;">[0.210] CACHE_LOAD: OK</text>
+  <text x="30" y="160" class="matrix-line" style="animation: matrixText 5s infinite 0.2s;">[1.600] PIPELINE_START</text>
+  <text x="30" y="180" class="matrix-line" style="animation: matrixText 3.5s infinite 2s;">[2.122] SYS_ONLINE</text>
+
+  <!-- Glowing HUD Rings on the right -->
+  <circle cx="700" cy="100" r="50" class="glow-circle" />
+  <circle cx="700" cy="100" r="35" class="glow-circle-inner" />
+  <circle cx="700" cy="100" r="10" fill="#00ffcc" opacity="0.7"/>
+
+  <!-- Scanning Line -->
+  <line x1="0" y1="0" x2="800" y2="0" stroke="#00ffcc" stroke-width="1.5" opacity="0.3" style="animation: scanline 4s infinite linear;" />
+
+  <!-- Title & Subtitle -->
+  <text x="180" y="105" font-size="42" class="neon-text" letter-spacing="8">XAI GROK BOT</text>
+  <text x="185" y="145" class="sub-text">TELEGRAM POWERED TERMINAL</text>
+  <text x="185" y="170" class="sub-text" font-size="11" fill="#00ffcc" style="opacity: 0.8;">BY SHADOWED TOMB</text>
+</svg>
